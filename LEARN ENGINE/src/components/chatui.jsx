@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 
+
 export default function ChatbotUI() {
   const [messages, setMessages] = useState([
     { text: "Hi there! How can I help you today?", isBot: true }
@@ -21,7 +22,7 @@ export default function ChatbotUI() {
         ...newMessages,
         { text: `Thanks for your message! This is a demo response to: "${inputValue}"`, isBot: true }
       ]);
-    }, 1000);
+    },0);
   };
 
   const handleKeyPress = (e) => {
@@ -68,5 +69,3 @@ export default function ChatbotUI() {
     </div>
   );
 }
-
-
