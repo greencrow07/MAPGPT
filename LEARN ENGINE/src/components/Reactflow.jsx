@@ -11,7 +11,7 @@ const initialNodes = [
       id: '1',
       type: 'button', // <-- This is our custom node (not built-in)
       position: { x: 250, y: 25 },
-      data: { label: 'aaajaaa bhai' },
+      data: { label: 'aaajaaa bhai'},
     },
   ];
 
