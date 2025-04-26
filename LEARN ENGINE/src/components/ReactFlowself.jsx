@@ -1,44 +1,51 @@
-import { Background, 
-    Position,
-    ReactFlow,
-    ReactFlowProvider,
-    useEdgesState,
-    useNodesState 
-    } from "@xyflow/react";
-import React from "react";
-import ChatbotUI from "./chatui";
-
+import  {ReactFlow, 
+    Background, 
+    Controls, 
+    ReactFlowProvider, 
+    useNodesState } from '@xyflow/react';
+  import 'reactflow/dist/style.css';
+  import CustomNode from './cust';
+import { useCallback } from 'react';
+  
 const nodeTypes = {
-    ChatBot : ChatbotUI
+  button : CustomNode
 }
-
 const initialNodes = [
     {
-        id : 1, 
-        type : 'ChatBot',
-        data : {label : 'first node'},
-        position : {x:0, y:0}
-    }
-]
-const initialEdges = []
+      id: '1',
+      type: 'button', // <-- This is our custom node (not built-in)
+      position: { x: 250, y: 25 },
+      data: { label: id,
+        onAddNode : addNode
+      },
+    },
+  ];
 
-const [nodes, setNodes, onNodesChange] = useNodesState(initialnodes);
-const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const addNode = useCallback((data) => {
+
+  },[])
 
 
-export default function flowApp(){
-    return (
+function flowApp(){
+
+
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+
+
+return (
         <ReactFlowProvider>
-            <div height = '100vh' width = '100vw'>
-                <Reactflow
+           <div style={{ width: '100vw', height: '100vh' }}>
+                <ReactFlow
                  nodes={initialNodes}
-                 edges={initialEdges}
+                 nodeTypes = {nodeTypes}
                  onNodesChange={onNodesChange}
-                 onEdgesChange={onEdgesChange}
+                 fitView
                 >
-                    <Background variant="lines"/>
-                </Reactflow>
+                    <Background variant="dots" gap={20} size ={5}/>
+                    <Controls/>
+                </ReactFlow>
             </div>
         </ReactFlowProvider>
     )
 }
+export default flowApp;

@@ -1,5 +1,8 @@
-import  {ReactFlow, Background, Controls, ReactFlowProvider, useNodesState } from '@xyflow/react';
-import { useCallback, useState } from 'react';
+import  {ReactFlow, 
+  Background, 
+  Controls, 
+  ReactFlowProvider, 
+  useNodesState } from '@xyflow/react';
 import 'reactflow/dist/style.css';
 import CustomNode from './cust';
 
@@ -13,22 +16,21 @@ const initialNodes = [
       position: { x: 250, y: 25 },
       data: { label: 'aaajaaa bhai'},
     },
+    {
+      id : '2', type : 'button' , position : {x : 30, y : 40}, data : {label : '2nd node'}
+    }
   ];
 
 function Try() {
 
-  
-  // const initialEdges = [];
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  //  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
     <ReactFlowProvider>
       <div style={{ width: '100vw', height: '100vh' }}>
         <ReactFlow
           nodes={initialNodes}
-          // edges={edges}
           onNodesChange={onNodesChange}
           nodeTypes={nodeTypes} // <-- we’ll create this next
           fitView
